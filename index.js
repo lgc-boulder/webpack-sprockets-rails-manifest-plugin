@@ -21,7 +21,7 @@ WebpackSprocketsRailsManifestPlugin.prototype.apply = function(compiler) {
     assets: {}
   };
 
-  compiler.plugin("done", function(stats) {
+  compiler.hooks.done.tap('WebpackSprocketsRailsManifestPlugin', function(stats){
     var statsJson = stats.toJson();
     var chunks = statsJson.chunks;
     var devServer = compiler.options.devServer;
